@@ -1,8 +1,8 @@
-package com.bks.eurosporttest.network.mapper
+package com.bks.eurosporttest.domain.data.network.mapper
 
 import com.bks.eurosporttest.domain.model.Video
 import com.bks.eurosporttest.domain.util.DomainMapper
-import com.bks.eurosporttest.network.model.VideoDto
+import com.bks.eurosporttest.domain.data.network.model.VideoDto
 import com.bks.eurosporttest.util.DateUtils
 
 class VideoDtoMapper : DomainMapper<VideoDto, Video> {

@@ -1,4 +1,4 @@
-package com.bks.eurosporttest.domain.data
+package com.bks.eurosporttest.domain.data.util
 
 data class DataState<out T>(
     val data: T? = null,
@@ -9,7 +9,7 @@ data class DataState<out T>(
 
         fun <T> success(
             data: T
-        ): DataState<T>{
+        ): DataState<T> {
             return DataState(
                 data = data,
             )
@@ -17,7 +17,7 @@ data class DataState<out T>(
 
         fun <T> error(
             message: String,
-        ): DataState<T>{
+        ): DataState<T> {
             return DataState(
                 error = message
             )

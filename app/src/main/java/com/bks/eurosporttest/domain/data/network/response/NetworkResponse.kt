@@ -1,7 +1,7 @@
-package com.bks.eurosporttest.network.response
+package com.bks.eurosporttest.domain.data.network.response
 
 import com.bks.eurosporttest.domain.model.Story
-import com.bks.eurosporttest.network.model.VideoDto
+import com.bks.eurosporttest.domain.data.network.model.VideoDto
 import com.google.gson.annotations.SerializedName
 
 data class NetworkResponse(
