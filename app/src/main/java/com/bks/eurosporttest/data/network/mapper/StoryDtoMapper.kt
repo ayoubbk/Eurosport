@@ -1,8 +1,8 @@
-package com.bks.eurosporttest.domain.data.network.mapper
+package com.bks.eurosporttest.data.network.mapper
 
 import com.bks.eurosporttest.domain.model.Story
 import com.bks.eurosporttest.domain.util.DomainMapper
-import com.bks.eurosporttest.domain.data.network.model.StoryDto
+import com.bks.eurosporttest.data.network.model.StoryDto
 import com.bks.eurosporttest.util.DateUtils
 
 class StoryDtoMapper : DomainMapper<StoryDto, Story> {

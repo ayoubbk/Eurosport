@@ -1,8 +1,8 @@
 package com.bks.eurosporttest.di
 
-import com.bks.eurosporttest.domain.data.network.ApiService
-import com.bks.eurosporttest.domain.data.network.mapper.StoryDtoMapper
-import com.bks.eurosporttest.domain.data.network.mapper.VideoDtoMapper
+import com.bks.eurosporttest.data.network.ApiService
+import com.bks.eurosporttest.data.network.mapper.StoryDtoMapper
+import com.bks.eurosporttest.data.network.mapper.VideoDtoMapper
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides

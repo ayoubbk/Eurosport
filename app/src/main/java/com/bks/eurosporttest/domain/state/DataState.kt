@@ -1,4 +1,4 @@
-package com.bks.eurosporttest.domain.data.util
+package com.bks.eurosporttest.domain.state
 
 data class DataState<out T>(
     val data: T? = null,

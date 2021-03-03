@@ -1,4 +1,4 @@
-package com.bks.eurosporttest.domain.data.network.model
+package com.bks.eurosporttest.data.network.model
 
 import com.bks.eurosporttest.domain.model.Sport
 import com.google.gson.annotations.SerializedName
