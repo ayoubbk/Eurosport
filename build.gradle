@@ -1,13 +1,43 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-    ext.kotlin_version = "1.4.31"
+
+    ext {
+        // Sdk and tools
+        minSdkVersion = 21
+        targetSdkVersion = 30
+        compileSdkVersion = 30
+
+        kotlin_version = "1.4.31"
+        gradle_version = '4.1.1'
+
+        // App dependencies
+        ktx_version = "1.3.2"
+        app_compat_version = "1.2.0"
+        constraint_layout_version = "2.0.4"
+        material_version = "1.3.0"
+        fragment_version = "1.3.0"
+        hilt_lifecycle_viewmodel_version = "1.0.0-alpha03"
+        hilt_version = "2.33-beta"
+        lifecycle_version = "2.3.0"
+        navigation_component_version = "2.3.3"
+        room_version = "2.2.6"
+        retrofit_version = "2.9.0"
+
+        junit_version = "4.13.2"
+        test_ext_junit_version = "1.1.2"
+        espresso_version = "3.3.0"
+    }
+
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.1.1"
+        classpath "com.android.tools.build:gradle:$gradle_version"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigation_component_version"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -17,7 +47,7 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
+        jcenter() // make sure to migrate from jcenter() repo, in few months it will be shutdown
     }
 }
 
