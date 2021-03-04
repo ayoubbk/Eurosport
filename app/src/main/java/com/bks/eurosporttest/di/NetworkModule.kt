@@ -1,6 +1,7 @@
 package com.bks.eurosporttest.di
 
 import com.bks.eurosporttest.data.network.ApiService
+import com.bks.eurosporttest.data.network.ApiService.Companion.BASE_API_URL
 import com.bks.eurosporttest.data.network.mapper.StoryDtoMapper
 import com.bks.eurosporttest.data.network.mapper.VideoDtoMapper
 import com.google.gson.GsonBuilder
@@ -32,7 +33,7 @@ object NetworkModule {
     @Provides
     fun provideApiService(): ApiService {
         return Retrofit.Builder()
-            .baseUrl("https://extendsclass.com/api/json-storage/bin/")
+            .baseUrl(BASE_API_URL)
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
             .build()
             .create(ApiService::class.java)

@@ -2,7 +2,7 @@ package com.bks.eurosporttest.di
 
 import com.bks.eurosporttest.data.network.ApiService
 import com.bks.eurosporttest.data.network.mapper.VideoDtoMapper
-import com.bks.eurosporttest.interactors.featured.GetVideos
+import com.bks.eurosporttest.interactors.featured.GetVideosUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,8 +19,8 @@ object InteractorsModule {
     fun provideGetVideos(
         apiService: ApiService,
         videoDtoMapper: VideoDtoMapper
-    ):GetVideos {
-        return GetVideos(
+    ):GetVideosUseCase {
+        return GetVideosUseCase(
             apiService,
             videoDtoMapper
         )

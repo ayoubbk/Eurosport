@@ -7,4 +7,9 @@ interface ApiService {
 
     @GET("edfefba")
     suspend fun getVideosAndStories(): NetworkResponse
+
+
+    companion object {
+        const val BASE_API_URL = "https://extendsclass.com/api/json-storage/bin/"
+    }
 }
