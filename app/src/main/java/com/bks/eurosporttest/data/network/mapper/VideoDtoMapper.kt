@@ -13,7 +13,7 @@ class VideoDtoMapper : DomainMapper<VideoDto, Video> {
             title = model.title,
             thumb = model.thumb,
             url = model.url,
-            date = DateUtils.longToDate(model.longDate),
+            date = DateUtils.timestampToDate(model.date),
             sport = model.sport,
             views = model.views
         )
@@ -25,7 +25,7 @@ class VideoDtoMapper : DomainMapper<VideoDto, Video> {
             title = domainModel.title,
             thumb = domainModel.thumb,
             url = domainModel.url,
-            longDate = DateUtils.dateToLong(domainModel.date),
+            date = DateUtils.dateToTimestamp(domainModel.date),
             sport = domainModel.sport,
             views = domainModel.views
         )

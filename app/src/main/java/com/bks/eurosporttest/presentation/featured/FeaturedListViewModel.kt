@@ -21,7 +21,7 @@ constructor(
 
     val loading = MutableLiveData<Boolean>()
     private val _videos = MutableLiveData<List<Video>>()
-    val videos : LiveData<List<Video>> get() = _videos
+    val videos : LiveData<List<Video>>  = _videos
 
     init {
         fetchFeatured()
@@ -32,11 +32,11 @@ constructor(
             getVideosUseCase.execute().collect {dataState ->
                 loading.value = dataState.loading
 
-                dataState.data?.let {list ->
+                dataState.data?.let { list ->
                     _videos.value = list
                 }
 
-                dataState.error?.let {
+                dataState.error?.let { message ->
                     //handle error
                 }
             }

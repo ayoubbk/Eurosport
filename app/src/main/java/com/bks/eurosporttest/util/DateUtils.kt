@@ -1,19 +1,20 @@
 package com.bks.eurosporttest.util
 
-import java.lang.NullPointerException
+import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.util.*
 
 object DateUtils {
 
-    private val sdf = SimpleDateFormat("MMMMM d, yyyy")
+    private val sdf = SimpleDateFormat("dd-MM-yyyy HH:mm:ss")
 
-    fun longToDate(long: Long): Date {
-        return Date(long)
+    fun timestampToDate(timestamp: Double): Date {
+        val time = timestamp * 1000L // Fraction in nano seconds 1588224445.007
+        return Date(time.toLong())
     }
 
-    fun dateToLong(date: Date): Long {
-        return date.time
+    fun dateToTimestamp(date: Date): Double {
+        return date.time.toDouble()
     }
 
     // Ex: March 4, 2021

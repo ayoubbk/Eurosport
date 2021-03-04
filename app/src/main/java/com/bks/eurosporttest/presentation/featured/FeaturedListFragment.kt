@@ -1,7 +1,6 @@
 package com.bks.eurosporttest.presentation.featured
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -25,9 +24,10 @@ class FeaturedListFragment: Fragment(R.layout.fragment_featured) {
 
         binding = FragmentFeaturedBinding.bind(view)
 
-        setupViews()
+        //setupViews()
         subscribeObservers()
     }
+
 
     private fun setupViews() {
         binding.apply {
@@ -41,8 +41,7 @@ class FeaturedListFragment: Fragment(R.layout.fragment_featured) {
 
     private fun subscribeObservers() {
         viewModel.videos.observe(viewLifecycleOwner) {
-            Log.d(TAG, "subscribeObservers: list to submit: $it")
-            featuredAdapter.submitList(it)
+            //featuredAdapter.submitList(it)
         }
 
         viewModel.loading.observe(viewLifecycleOwner) {

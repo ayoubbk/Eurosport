@@ -18,7 +18,7 @@ data class StoryDto(
     var image: String,
 
     @SerializedName("date")
-    var date: Long,
+    var date: Double,
 
     @SerializedName("author")
     var author: String,

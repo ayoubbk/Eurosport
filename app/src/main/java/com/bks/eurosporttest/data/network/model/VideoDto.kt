@@ -18,7 +18,7 @@ data class VideoDto (
     var url: String,
 
     @SerializedName("date")
-    var longDate: Long,
+    var date: Double,
 
     @SerializedName("sport")
     var sport: Sport,

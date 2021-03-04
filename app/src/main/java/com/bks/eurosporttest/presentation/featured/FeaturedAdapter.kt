@@ -1,7 +1,6 @@
 package com.bks.eurosporttest.presentation.featured
 
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bks.eurosporttest.domain.model.Video
 

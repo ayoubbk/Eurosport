@@ -13,7 +13,7 @@ class StoryDtoMapper : DomainMapper<StoryDto, Story> {
             title = model.title,
             teaser = model.teaser,
             image = model.image,
-            date = DateUtils.longToDate(model.date),
+            date = DateUtils.timestampToDate(model.date),
             author = model.author,
             sport = model.sport
         )
@@ -25,7 +25,7 @@ class StoryDtoMapper : DomainMapper<StoryDto, Story> {
             title = domainModel.title,
             teaser = domainModel.teaser,
             image = domainModel.image,
-            date = DateUtils.dateToLong(domainModel.date),
+            date = DateUtils.dateToTimestamp(domainModel.date),
             author = domainModel.author,
             sport = domainModel.sport
         )
