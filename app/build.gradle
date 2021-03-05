@@ -82,5 +82,8 @@ dependencies {
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
 
+    //Third party
+    implementation "io.coil-kt:coil:1.1.1"
+
 
 }

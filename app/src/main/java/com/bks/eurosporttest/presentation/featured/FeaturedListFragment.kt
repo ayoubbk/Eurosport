@@ -1,18 +1,20 @@
 package com.bks.eurosporttest.presentation.featured
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bks.eurosporttest.R
 import com.bks.eurosporttest.databinding.FragmentFeaturedBinding
+import com.bks.eurosporttest.domain.model.Video
 import dagger.hilt.android.AndroidEntryPoint
 
 private const val TAG = "FeaturedListFragment"
 
 @AndroidEntryPoint
-class FeaturedListFragment: Fragment(R.layout.fragment_featured) {
+class FeaturedListFragment: Fragment(R.layout.fragment_featured), FeaturedAdapter.Interaction {
 
     private val viewModel: FeaturedListViewModel by viewModels()
 
@@ -24,7 +26,7 @@ class FeaturedListFragment: Fragment(R.layout.fragment_featured) {
 
         binding = FragmentFeaturedBinding.bind(view)
 
-        //setupViews()
+        setupViews()
         subscribeObservers()
     }
 
@@ -33,7 +35,9 @@ class FeaturedListFragment: Fragment(R.layout.fragment_featured) {
         binding.apply {
             recyclerViewFeatured.apply {
                 layoutManager = LinearLayoutManager(requireContext())
-                featuredAdapter = FeaturedAdapter()
+                featuredAdapter = FeaturedAdapter(
+                    this@FeaturedListFragment
+                )
                 adapter = featuredAdapter
             }
         }
@@ -41,13 +45,23 @@ class FeaturedListFragment: Fragment(R.layout.fragment_featured) {
 
     private fun subscribeObservers() {
         viewModel.videos.observe(viewLifecycleOwner) {
-            //featuredAdapter.submitList(it)
+            featuredAdapter.updateItems(it)
         }
 
         viewModel.loading.observe(viewLifecycleOwner) {
-            //show or hide progressBar
+            displayProgress(it)
         }
     }
 
+    private fun displayProgress(isDisplayed: Boolean) {
+        if(isDisplayed) {
+            binding.progressBar.visibility = View.VISIBLE
+        } else {
+            binding.progressBar.visibility = View.GONE
+        }
+    }
 
+    override fun onItemSelected(position: Int, item: Video) {
+        Log.d(TAG, "onItemSelected: ${item.title} selected")
+    }
 }
