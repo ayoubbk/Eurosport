@@ -3,13 +3,16 @@ package com.bks.eurosporttest.presentation.featured
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bks.eurosporttest.R
 import com.bks.eurosporttest.databinding.FragmentFeaturedBinding
 import com.bks.eurosporttest.domain.model.Story
 import com.bks.eurosporttest.domain.model.Video
+import com.bks.eurosporttest.presentation.storydetail.SELECTED_STORY_BUNDLE_KEY
 import dagger.hilt.android.AndroidEntryPoint
 
 private const val TAG = "FeaturedListFragment"
@@ -17,7 +20,7 @@ private const val TAG = "FeaturedListFragment"
 @AndroidEntryPoint
 class FeaturedListFragment: Fragment(R.layout.fragment_featured), FeaturedAdapter.Interaction {
 
-    private val viewModel: FeaturedListViewModel by viewModels()
+    private val viewModel: FeaturedViewModel by viewModels()
 
     lateinit var binding: FragmentFeaturedBinding
     lateinit var featuredAdapter: FeaturedAdapter
@@ -69,5 +72,11 @@ class FeaturedListFragment: Fragment(R.layout.fragment_featured), FeaturedAdapte
 
     override fun onStorySelected(position: Int, item: Story) {
         Log.d(TAG, "onStorySelected: ${item.title} selected")
+        navigateToStoryFragment(item)
+    }
+
+    private fun navigateToStoryFragment(selectedStory: Story) {
+        val bundle = bundleOf(SELECTED_STORY_BUNDLE_KEY to selectedStory)
+        findNavController().navigate(R.id.action_featuredListFragment_to_storyFragment, bundle)
     }
 }

@@ -9,5 +9,13 @@
         android:id="@+id/featuredListFragment"
         android:name="com.bks.eurosporttest.presentation.featured.FeaturedListFragment"
         android:label="fragment_featured"
-        tools:layout="@layout/fragment_featured" />
+        tools:layout="@layout/fragment_featured" >
+        <action
+            android:id="@+id/action_featuredListFragment_to_storyFragment"
+            app:destination="@id/storyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/storyFragment"
+        android:name="com.bks.eurosporttest.presentation.storydetail.StoryFragment"
+        android:label="StoryFragment" />
 </navigation>

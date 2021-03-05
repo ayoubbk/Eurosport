@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class FeaturedListViewModel
+class FeaturedViewModel
 @Inject
 constructor(
     private val getVideosUseCase: GetVideosAndStories
@@ -20,8 +20,7 @@ constructor(
 
     val loading = MutableLiveData<Boolean>()
     private val _videos = MutableLiveData<List<Any>>()
-    val videos : LiveData<List<Any>>  = _videos
-
+    val videos : LiveData<List<Any>> get() = _videos
 
     init {
         fetchFeatured()
