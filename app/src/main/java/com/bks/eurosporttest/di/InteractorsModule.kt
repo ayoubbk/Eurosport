@@ -1,8 +1,9 @@
 package com.bks.eurosporttest.di
 
 import com.bks.eurosporttest.data.network.ApiService
+import com.bks.eurosporttest.data.network.mapper.StoryDtoMapper
 import com.bks.eurosporttest.data.network.mapper.VideoDtoMapper
-import com.bks.eurosporttest.interactors.featured.GetVideosUseCase
+import com.bks.eurosporttest.interactors.featured.GetVideosAndStories
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,13 +17,15 @@ object InteractorsModule {
 
     @ViewModelScoped
     @Provides
-    fun provideGetVideos(
+    fun provideGetVideosAndStories(
         apiService: ApiService,
-        videoDtoMapper: VideoDtoMapper
-    ):GetVideosUseCase {
-        return GetVideosUseCase(
+        videoDtoMapper: VideoDtoMapper,
+        storyDtoMapper: StoryDtoMapper
+    ):GetVideosAndStories {
+        return GetVideosAndStories(
             apiService,
-            videoDtoMapper
+            videoDtoMapper,
+            storyDtoMapper
         )
     }
 

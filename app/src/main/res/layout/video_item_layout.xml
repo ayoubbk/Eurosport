@@ -6,7 +6,8 @@
     android:layout_height="wrap_content"
     android:paddingTop="10dp"
     android:paddingEnd="8dp"
-    android:paddingStart="8dp">
+    android:paddingStart="8dp"
+    android:paddingBottom="10dp">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_video"
@@ -47,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                tools:text="title goes here"
+                tools:text="title here"
                 android:textColor="@color/black"
                 android:textSize="@dimen/title_size"
                 app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/view_margin_left"
                 android:layout_marginTop="@dimen/view_margin_top"
-                android:textColor="@color/color_video_views_number"
+                android:textColor="@color/color_views_number"
                 tools:text="1042 views"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_title" />

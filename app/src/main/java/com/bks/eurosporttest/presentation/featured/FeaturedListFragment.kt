@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bks.eurosporttest.R
 import com.bks.eurosporttest.databinding.FragmentFeaturedBinding
+import com.bks.eurosporttest.domain.model.Story
 import com.bks.eurosporttest.domain.model.Video
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -61,7 +62,12 @@ class FeaturedListFragment: Fragment(R.layout.fragment_featured), FeaturedAdapte
         }
     }
 
-    override fun onItemSelected(position: Int, item: Video) {
-        Log.d(TAG, "onItemSelected: ${item.title} selected")
+
+    override fun onPlayVideo(position: Int, item: Video) {
+        Log.d(TAG, "play: ${item.title} video")
+    }
+
+    override fun onStorySelected(position: Int, item: Story) {
+        Log.d(TAG, "onStorySelected: ${item.title} selected")
     }
 }
