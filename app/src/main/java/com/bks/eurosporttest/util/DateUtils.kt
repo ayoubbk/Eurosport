@@ -1,6 +1,5 @@
 package com.bks.eurosporttest.util
 
-import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -17,7 +16,6 @@ object DateUtils {
         return date.time.toDouble()
     }
 
-    // Ex: March 4, 2021
     fun dateToString(date: Date): String {
         return sdf.format(date)
     }

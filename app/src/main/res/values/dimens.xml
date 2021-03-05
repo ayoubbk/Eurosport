@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="title_size">28sp</dimen>
+    <dimen name="title_size">22sp</dimen>
     <dimen name="view_margin_left">16dp</dimen>
-    <dimen name="view_margin_top">8dp</dimen>
+    <dimen name="view_margin_top">4dp</dimen>
 </resources>
