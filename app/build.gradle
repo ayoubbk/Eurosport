@@ -5,6 +5,7 @@ plugins {
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'de.mannodermaus.android-junit5'
 }
 
 android {
@@ -86,6 +87,13 @@ dependencies {
 
     // ExoPlayer
     implementation "com.google.android.exoplayer:exoplayer:$exo_player_version"
+
+    // Testing
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$jupiter_api_version"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$jupiter_engine_version"
+
+    // Mock web server
+    testImplementation "com.squareup.okhttp3:mockwebserver:$mock_web_server_version"
 
 
 }
