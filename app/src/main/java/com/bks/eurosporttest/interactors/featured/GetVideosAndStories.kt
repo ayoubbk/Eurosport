@@ -43,7 +43,6 @@ class GetVideosAndStories(
 
             emit(DataState.success(mixedList))
         } catch (e: Exception) {
-            Log.e(TAG, "Error to get featured list :  $e.printStackTrace()")
             emit(DataState.error<List<Any>>(e.message ?: "Unknown Error"))
         }
     }
