@@ -29,6 +29,10 @@ buildscript {
         junit_version = "4.13.2"
         test_ext_junit_version = "1.1.2"
         espresso_version = "3.3.0"
+        junit5_version = "1.7.1.1"
+        jupiter_api_version = "5.7.1"
+        jupiter_engine_version = "5.7.1"
+        mock_web_server_version = "4.9.0"
     }
 
     repositories {
@@ -37,13 +41,15 @@ buildscript {
     }
     dependencies {
         classpath "com.android.tools.build:gradle:$gradle_version"
+
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigation_component_version"
+
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
 
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        classpath "de.mannodermaus.gradle.plugins:android-junit5:$junit5_version"
+
     }
 }
 
