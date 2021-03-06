@@ -30,7 +30,6 @@ class StoryFragment : Fragment(R.layout.fragment_story_details) {
 
     private fun subscribeObservers() {
         viewModel.story.observe(viewLifecycleOwner) {story ->
-            // set story
             setupView(story)
         }
     }

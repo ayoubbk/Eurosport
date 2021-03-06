@@ -22,6 +22,9 @@ buildscript {
         navigation_component_version = "2.3.3"
         room_version = "2.2.6"
         retrofit_version = "2.9.0"
+        coil_version = "1.1.1"
+        exo_player_version = "2.13.2"
+        okhttp_version = "4.9.1"
 
         junit_version = "4.13.2"
         test_ext_junit_version = "1.1.2"

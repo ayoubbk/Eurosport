@@ -71,19 +71,21 @@ dependencies {
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_lifecycle_viewmodel_version"
     kapt "androidx.hilt:hilt-compiler:$hilt_lifecycle_viewmodel_version"
 
-
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-    implementation "com.squareup.okhttp3:logging-interceptor:4.9.1"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
 
     // Room
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
 
-    //Third party
-    implementation "io.coil-kt:coil:1.1.1"
+    // Third party
+    implementation "io.coil-kt:coil:$coil_version"
+
+    // ExoPlayer
+    implementation "com.google.android.exoplayer:exoplayer:$exo_player_version"
 
 
 }

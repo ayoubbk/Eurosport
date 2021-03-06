@@ -13,9 +13,16 @@
         <action
             android:id="@+id/action_featuredListFragment_to_storyFragment"
             app:destination="@id/storyFragment" />
+        <action
+            android:id="@+id/action_featuredListFragment_to_playerFragment"
+            app:destination="@id/playerFragment" />
     </fragment>
     <fragment
         android:id="@+id/storyFragment"
         android:name="com.bks.eurosporttest.presentation.storydetail.StoryFragment"
         android:label="StoryFragment" />
+    <fragment
+        android:id="@+id/playerFragment"
+        android:name="com.bks.eurosporttest.presentation.player.PlayerFragment"
+        android:label="PlayerFragment" />
 </navigation>

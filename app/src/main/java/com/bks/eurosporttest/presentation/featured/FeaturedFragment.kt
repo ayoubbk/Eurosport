@@ -1,7 +1,6 @@
 package com.bks.eurosporttest.presentation.featured
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
@@ -12,10 +11,10 @@ import com.bks.eurosporttest.R
 import com.bks.eurosporttest.databinding.FragmentFeaturedBinding
 import com.bks.eurosporttest.domain.model.Story
 import com.bks.eurosporttest.domain.model.Video
+import com.bks.eurosporttest.presentation.player.SELECTED_VIDEO_BUNDLE_KEY
 import com.bks.eurosporttest.presentation.storydetail.SELECTED_STORY_BUNDLE_KEY
 import dagger.hilt.android.AndroidEntryPoint
 
-private const val TAG = "FeaturedListFragment"
 
 @AndroidEntryPoint
 class FeaturedListFragment: Fragment(R.layout.fragment_featured), FeaturedAdapter.Interaction {
@@ -48,8 +47,8 @@ class FeaturedListFragment: Fragment(R.layout.fragment_featured), FeaturedAdapte
     }
 
     private fun subscribeObservers() {
-        viewModel.videos.observe(viewLifecycleOwner) {
-            featuredAdapter.updateItems(it)
+        viewModel.videos.observe(viewLifecycleOwner) { videosAndStories ->
+            featuredAdapter.updateItems(videosAndStories)
         }
 
         viewModel.loading.observe(viewLifecycleOwner) {
@@ -67,16 +66,20 @@ class FeaturedListFragment: Fragment(R.layout.fragment_featured), FeaturedAdapte
 
 
     override fun onPlayVideo(position: Int, item: Video) {
-        Log.d(TAG, "play: ${item.title} video")
+        navigateToPlayerScreen(item)
     }
 
     override fun onStorySelected(position: Int, item: Story) {
-        Log.d(TAG, "onStorySelected: ${item.title} selected")
-        navigateToStoryFragment(item)
+        navigateToStoryScreen(item)
     }
 
-    private fun navigateToStoryFragment(selectedStory: Story) {
+    private fun navigateToStoryScreen(selectedStory: Story) {
         val bundle = bundleOf(SELECTED_STORY_BUNDLE_KEY to selectedStory)
         findNavController().navigate(R.id.action_featuredListFragment_to_storyFragment, bundle)
+    }
+
+    private fun navigateToPlayerScreen(selectedVideo: Video) {
+        val bundle = bundleOf(SELECTED_VIDEO_BUNDLE_KEY to selectedVideo)
+        findNavController().navigate(R.id.action_featuredListFragment_to_playerFragment, bundle)
     }
 }
