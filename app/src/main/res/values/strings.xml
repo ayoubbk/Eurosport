@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">EurosportTest</string>
+    <string name="by_text">By </string>
 </resources>

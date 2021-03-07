@@ -17,10 +17,11 @@ constructor(
     private val getVideosUseCase: GetVideosAndStories
 ):ViewModel()
 {
+    private val _viewState = MutableLiveData<FeaturedViewState>()
+    val viewState: LiveData<FeaturedViewState> = _viewState
 
-    val loading = MutableLiveData<Boolean>()
-    private val _videos = MutableLiveData<List<Any>>()
-    val videos : LiveData<List<Any>> get() = _videos
+    private val _videosAndStories = MutableLiveData<List<Any>>()
+    val videosAndStories : LiveData<List<Any>> get() = _videosAndStories
 
     init {
         fetchFeatured()
@@ -28,15 +29,18 @@ constructor(
 
     private fun fetchFeatured() {
         viewModelScope.launch {
-            getVideosUseCase.execute().collect {dataState ->
-                loading.value = dataState.loading
+            getVideosUseCase.execute().collect { dataState ->
 
-                dataState.data?.let {
-                    _videos.value = it
+                dataState.loading.let {
+                    _viewState.value = FeaturedViewState.Loading(it)
+                }
+
+                dataState.data?.let { list ->
+                    _videosAndStories.value = list
                 }
 
                 dataState.error?.let { message ->
-                    //handle error
+                    _viewState.value = FeaturedViewState.Error(message)
                 }
             }
         }

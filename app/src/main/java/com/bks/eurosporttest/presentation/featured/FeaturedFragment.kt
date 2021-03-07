@@ -11,8 +11,10 @@ import com.bks.eurosporttest.R
 import com.bks.eurosporttest.databinding.FragmentFeaturedBinding
 import com.bks.eurosporttest.domain.model.Story
 import com.bks.eurosporttest.domain.model.Video
+import com.bks.eurosporttest.presentation.featured.FeaturedViewState.*
 import com.bks.eurosporttest.presentation.player.SELECTED_VIDEO_BUNDLE_KEY
 import com.bks.eurosporttest.presentation.storydetail.SELECTED_STORY_BUNDLE_KEY
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -47,13 +49,26 @@ class FeaturedListFragment: Fragment(R.layout.fragment_featured), FeaturedAdapte
     }
 
     private fun subscribeObservers() {
-        viewModel.videos.observe(viewLifecycleOwner) { videosAndStories ->
+        viewModel.videosAndStories.observe(viewLifecycleOwner) { videosAndStories ->
             featuredAdapter.updateItems(videosAndStories)
         }
 
-        viewModel.loading.observe(viewLifecycleOwner) {
-            displayProgress(it)
+        viewModel.viewState.observe(viewLifecycleOwner) {  viewState ->
+            when(viewState) {
+                is Error -> {
+                    Snackbar.make(
+                        binding.featuredListFragment,
+                        viewState.message,
+                        Snackbar.LENGTH_LONG
+                    ).show()
+                }
+
+                is Loading -> {
+                    displayProgress(viewState.isLoading)
+                }
+            }
         }
+
     }
 
     private fun displayProgress(isDisplayed: Boolean) {
@@ -63,7 +78,6 @@ class FeaturedListFragment: Fragment(R.layout.fragment_featured), FeaturedAdapte
             binding.progressBar.visibility = View.GONE
         }
     }
-
 
     override fun onPlayVideo(position: Int, item: Video) {
         navigateToPlayerScreen(item)

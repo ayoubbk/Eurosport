@@ -9,6 +9,7 @@ import com.bks.eurosporttest.databinding.StoryItemLayoutBinding
 import com.bks.eurosporttest.databinding.VideoItemLayoutBinding
 import com.bks.eurosporttest.domain.model.Story
 import com.bks.eurosporttest.domain.model.Video
+import java.lang.StringBuilder
 
 /**
  * Use DiffUtil for better performance
@@ -24,7 +25,7 @@ class FeaturedAdapter(
 
         return when(viewType) {
             R.layout.video_item_layout -> {
-                var binding = VideoItemLayoutBinding.inflate(
+                val binding = VideoItemLayoutBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
                     false
@@ -33,7 +34,7 @@ class FeaturedAdapter(
             }
 
             R.layout.story_item_layout -> {
-                var binding = StoryItemLayoutBinding.inflate(
+                val binding = StoryItemLayoutBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
                     false
@@ -118,8 +119,13 @@ class FeaturedAdapter(
                     placeholder(R.color.color_box_background)
                     crossfade(true)
                 }
+
                 tvTitle.text = item.title
-                tvAuthor.text = "By ".plus(item.author)
+                val author = StringBuilder()
+                author.append(itemView.context.getString(R.string.by_text))
+                author.append(" ")
+                author.append(item.author)
+                tvAuthor.text = author
                 tvDate.text = item.date.toString() // use DateUtils to convert date into ..min ago pattern
             }
         }
