@@ -40,6 +40,8 @@ class FeaturedListFragment: Fragment(R.layout.fragment_featured), FeaturedAdapte
         binding.apply {
             recyclerViewFeatured.apply {
                 layoutManager = LinearLayoutManager(requireContext())
+                val topSpacingDecorator = TopSpacingItemDecoration(30)
+                addItemDecoration(topSpacingDecorator)
                 featuredAdapter = FeaturedAdapter(
                     this@FeaturedListFragment
                 )
