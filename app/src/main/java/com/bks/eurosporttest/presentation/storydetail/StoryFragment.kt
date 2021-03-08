@@ -43,6 +43,8 @@ class StoryFragment : Fragment(R.layout.fragment_story_details) {
                 placeholder(R.color.color_box_background)
                 crossfade(true)
             }
+
+            tvCategory.text = story.sport.name
             tvTitle.text = story.title
             val author = StringBuilder()
             author.append(context?.getString(R.string.by_text))

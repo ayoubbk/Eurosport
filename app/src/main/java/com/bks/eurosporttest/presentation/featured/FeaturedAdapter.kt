@@ -10,6 +10,7 @@ import com.bks.eurosporttest.databinding.VideoItemLayoutBinding
 import com.bks.eurosporttest.domain.model.FeaturedItem
 import com.bks.eurosporttest.domain.model.Story
 import com.bks.eurosporttest.domain.model.Video
+import com.bks.eurosporttest.util.EuroDateUtils
 import java.lang.StringBuilder
 
 /**
@@ -91,6 +92,7 @@ class FeaturedAdapter(
                     placeholder(R.color.color_box_background)
                     crossfade(true)
                 }
+                tvCategory.text = item.sport.name
                 tvTitle.text = item.title
                 tvViews.text = item.views.toString().plus(" views")
             }
@@ -121,13 +123,14 @@ class FeaturedAdapter(
                     crossfade(true)
                 }
 
+                tvCategory.text = item.sport.name
                 tvTitle.text = item.title
                 val author = StringBuilder()
                 author.append(itemView.context.getString(R.string.by_text))
                 author.append(" ")
                 author.append(item.author)
                 tvAuthor.text = author
-                tvDate.text = item.date.toString() // use DateUtils to convert date into ..min ago pattern
+                tvDate.text = EuroDateUtils.getFormattedDate(item.date)
             }
         }
 
