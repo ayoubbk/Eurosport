@@ -1,6 +1,7 @@
 package com.bks.eurosporttest.presentation.storydetail
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -8,8 +9,9 @@ import coil.load
 import com.bks.eurosporttest.R
 import com.bks.eurosporttest.databinding.FragmentStoryDetailsBinding
 import com.bks.eurosporttest.domain.model.Story
-import com.bks.eurosporttest.util.DateUtils
+import com.bks.eurosporttest.util.EuroDateUtils
 import dagger.hilt.android.AndroidEntryPoint
+import java.lang.StringBuilder
 
 
 @AndroidEntryPoint
@@ -41,8 +43,12 @@ class StoryFragment : Fragment(R.layout.fragment_story_details) {
                 crossfade(true)
             }
             tvTitle.text = story.title
-            tvAuthor.text = "By ".plus(story.author)
-            tvTime.text = DateUtils.dateToString(story.date)
+            val author = StringBuilder()
+            author.append(context?.getString(R.string.by_text))
+            author.append(" ")
+            author.append(story.author)
+            tvAuthor.text = author
+            tvTime.text = EuroDateUtils.getFormattedDate(story.date)
             tvTeaser.text = story.teaser
         }
     }

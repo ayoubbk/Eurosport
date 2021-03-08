@@ -3,7 +3,7 @@ package com.bks.eurosporttest.data.network.mapper
 import com.bks.eurosporttest.domain.model.Story
 import com.bks.eurosporttest.domain.util.DomainMapper
 import com.bks.eurosporttest.data.network.model.StoryDto
-import com.bks.eurosporttest.util.DateUtils
+import com.bks.eurosporttest.util.EuroDateUtils
 
 class StoryDtoMapper : DomainMapper<StoryDto, Story> {
 
@@ -13,7 +13,7 @@ class StoryDtoMapper : DomainMapper<StoryDto, Story> {
             title = model.title,
             teaser = model.teaser,
             image = model.image,
-            date = DateUtils.timestampToDate(model.date),
+            date = EuroDateUtils.timestampToDate(model.date),
             author = model.author,
             sport = model.sport
         )
@@ -25,7 +25,7 @@ class StoryDtoMapper : DomainMapper<StoryDto, Story> {
             title = domainModel.title,
             teaser = domainModel.teaser,
             image = domainModel.image,
-            date = DateUtils.dateToTimestamp(domainModel.date),
+            date = EuroDateUtils.dateToTimestamp(domainModel.date),
             author = domainModel.author,
             sport = domainModel.sport
         )

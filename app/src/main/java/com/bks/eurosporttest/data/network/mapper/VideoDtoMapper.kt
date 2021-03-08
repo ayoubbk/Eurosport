@@ -3,7 +3,7 @@ package com.bks.eurosporttest.data.network.mapper
 import com.bks.eurosporttest.domain.model.Video
 import com.bks.eurosporttest.domain.util.DomainMapper
 import com.bks.eurosporttest.data.network.model.VideoDto
-import com.bks.eurosporttest.util.DateUtils
+import com.bks.eurosporttest.util.EuroDateUtils
 
 class VideoDtoMapper : DomainMapper<VideoDto, Video> {
 
@@ -13,7 +13,7 @@ class VideoDtoMapper : DomainMapper<VideoDto, Video> {
             title = model.title,
             thumb = model.thumb,
             url = model.url,
-            date = DateUtils.timestampToDate(model.date),
+            date = EuroDateUtils.timestampToDate(model.date),
             sport = model.sport,
             views = model.views
         )
@@ -25,7 +25,7 @@ class VideoDtoMapper : DomainMapper<VideoDto, Video> {
             title = domainModel.title,
             thumb = domainModel.thumb,
             url = domainModel.url,
-            date = DateUtils.dateToTimestamp(domainModel.date),
+            date = EuroDateUtils.dateToTimestamp(domainModel.date),
             sport = domainModel.sport,
             views = domainModel.views
         )
