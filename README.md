@@ -5,7 +5,7 @@ A simple android app that displays stories and videos from network API.
 ## Features
 * Fetch featured stories and videos and display them in a list.
 * Play videos in full screen.
-* Story details screen.
+* Display story details.
 
 ## Architecture
 * Latest cutting edge Android Development practices.
@@ -25,4 +25,4 @@ A simple android app that displays stories and videos from network API.
 - [Retrofit](https://square.github.io/retrofit/) - A type-safe HTTP client for Android and Java.
 - [Material Components for Android](https://github.com/material-components/material-components-android) - Modular and customizable Material Design UI components for Android.
 - [ExoPlayer](https://developer.android.com/guide/topics/media/exoplayer) - An application level media player for Android.
-- [MockWebServer](https://github.com/square/okhttp/tree/master/mockwebserver) - Makes it easy to test that your app Does The Right Thing when it makes HTTP and HTTPS calls.
+- [MockWebServer](https://github.com/square/okhttp/tree/master/mockwebserver) - Makes easy to test HTTP and HTTPS calls.
