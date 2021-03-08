@@ -4,7 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.bks.eurosporttest.interactors.featured.GetVideosAndStories
+import com.bks.eurosporttest.domain.model.FeaturedItem
+import com.bks.eurosporttest.interactors.featured.GetFeaturedItemUsecase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -14,14 +15,14 @@ import javax.inject.Inject
 class FeaturedViewModel
 @Inject
 constructor(
-    private val getVideosUseCase: GetVideosAndStories
+    private val getVideosUseCase: GetFeaturedItemUsecase
 ):ViewModel()
 {
     private val _viewState = MutableLiveData<FeaturedViewState>()
     val viewState: LiveData<FeaturedViewState> = _viewState
 
-    private val _videosAndStories = MutableLiveData<List<Any>>()
-    val videosAndStories : LiveData<List<Any>> get() = _videosAndStories
+    private val _videosAndStories = MutableLiveData<List<FeaturedItem>>()
+    val videosAndStories : LiveData<List<FeaturedItem>> get() = _videosAndStories
 
     init {
         fetchFeatured()

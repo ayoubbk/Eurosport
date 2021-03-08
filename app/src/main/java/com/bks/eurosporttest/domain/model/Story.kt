@@ -6,11 +6,11 @@ import java.util.*
 
 @Parcelize
 data class Story(
-    val id: Long,
-    val title: String,
+    override val id: Long,
+    override val title: String,
     val teaser: String,
     val image: String,
-    val date: Date,
+    override val date: Date,
     val author: String,
-    val sport: Sport
-):Parcelable
+    override val sport: Sport
+):Parcelable, FeaturedItem

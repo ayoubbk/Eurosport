@@ -6,11 +6,11 @@ import java.util.*
 
 @Parcelize
 data class Video (
-    val id: Long,
-    val title: String,
+    override val id: Long,
+    override val title: String,
     val thumb: String,
     val url: String,
-    val date: Date,
-    val sport: Sport,
+    override val date: Date,
+    override val sport: Sport,
     val views: Int
-):Parcelable
+):Parcelable, FeaturedItem

@@ -7,6 +7,7 @@ import coil.load
 import com.bks.eurosporttest.R
 import com.bks.eurosporttest.databinding.StoryItemLayoutBinding
 import com.bks.eurosporttest.databinding.VideoItemLayoutBinding
+import com.bks.eurosporttest.domain.model.FeaturedItem
 import com.bks.eurosporttest.domain.model.Story
 import com.bks.eurosporttest.domain.model.Video
 import java.lang.StringBuilder
@@ -19,7 +20,7 @@ class FeaturedAdapter(
     private val interaction: Interaction? = null
 ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val items: ArrayList<Any> = arrayListOf()
+    private val items: ArrayList<FeaturedItem> = arrayListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
@@ -65,7 +66,7 @@ class FeaturedAdapter(
         return items.size
     }
 
-    fun updateItems(newList: List<Any>) {
+    fun updateItems(newList: List<FeaturedItem>) {
         items.clear()
         items.addAll(newList)
         notifyDataSetChanged()
