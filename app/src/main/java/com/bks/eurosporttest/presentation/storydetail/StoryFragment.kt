@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import coil.load
 import com.bks.eurosporttest.R
 import com.bks.eurosporttest.databinding.FragmentStoryDetailsBinding
@@ -50,6 +51,10 @@ class StoryFragment : Fragment(R.layout.fragment_story_details) {
             tvAuthor.text = author
             tvTime.text = EuroDateUtils.getFormattedDate(story.date)
             tvTeaser.text = story.teaser
+
+            ivBack.setOnClickListener {
+                findNavController().popBackStack()
+            }
         }
     }
 

@@ -7,8 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    
+    <color name="colorPrimary">#151D4C</color>
+    <color name="colorPrimaryDark">#0D265C</color>
 
     <color name="color_box_background">#FFFFFFFF</color>
     <color name="color_views_number">#7D7D7D</color>
-    <color name="color_sport_category">#151D4C</color>
+    <color name="color_sport_category">@color/colorPrimary</color>
 </resources>
