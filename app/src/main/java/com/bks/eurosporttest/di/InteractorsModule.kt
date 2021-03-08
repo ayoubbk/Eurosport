@@ -3,7 +3,7 @@ package com.bks.eurosporttest.di
 import com.bks.eurosporttest.data.network.ApiService
 import com.bks.eurosporttest.data.network.mapper.StoryDtoMapper
 import com.bks.eurosporttest.data.network.mapper.VideoDtoMapper
-import com.bks.eurosporttest.interactors.featured.GetVideosAndStories
+import com.bks.eurosporttest.interactors.featured.GetFeaturedItemUsecase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,8 +21,8 @@ object InteractorsModule {
         apiService: ApiService,
         videoDtoMapper: VideoDtoMapper,
         storyDtoMapper: StoryDtoMapper
-    ):GetVideosAndStories {
-        return GetVideosAndStories(
+    ):GetFeaturedItemUsecase {
+        return GetFeaturedItemUsecase(
             apiService,
             videoDtoMapper,
             storyDtoMapper

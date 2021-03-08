@@ -1,23 +1,22 @@
 package com.bks.eurosporttest.interactors.featured
 
-import android.util.Log
 import com.bks.eurosporttest.data.network.ApiService
 import com.bks.eurosporttest.data.network.mapper.StoryDtoMapper
 import com.bks.eurosporttest.data.network.mapper.VideoDtoMapper
 import com.bks.eurosporttest.data.network.response.NetworkResponse
+import com.bks.eurosporttest.domain.model.FeaturedItem
 import com.bks.eurosporttest.domain.state.DataState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-private const val TAG = "GetVideosUseCase"
 
-class GetVideosAndStories(
+class GetFeaturedItemUsecase(
     private val apiService: ApiService,
     private val videoDtoMapper: VideoDtoMapper,
     private val storyDtoMapper: StoryDtoMapper
 ) {
 
-    fun execute(): Flow<DataState<List<Any>>> = flow {
+    fun execute(): Flow<DataState<List<FeaturedItem>>> = flow {
         try {
             emit(DataState.loading())
 
@@ -31,7 +30,7 @@ class GetVideosAndStories(
             val sortedStories = stories.sortedByDescending { it.date }
 
             val resultSize = (videos.size + stories.size) - 1
-            val mixedList: ArrayList<Any> = ArrayList()
+            val mixedList: ArrayList<FeaturedItem> = ArrayList()
             for (i in 0 until resultSize ) {
                 if(i < videos.size) {
                     mixedList.add(sortedVideos[i])
@@ -43,7 +42,7 @@ class GetVideosAndStories(
 
             emit(DataState.success(mixedList))
         } catch (e: Exception) {
-            emit(DataState.error<List<Any>>(e.message ?: "Unknown Error"))
+            emit(DataState.error<List<FeaturedItem>>(e.message ?: "Unknown Error"))
         }
     }
 

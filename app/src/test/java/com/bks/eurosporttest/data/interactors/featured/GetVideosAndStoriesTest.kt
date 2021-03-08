@@ -6,7 +6,7 @@ import com.bks.eurosporttest.data.network.mapper.StoryDtoMapper
 import com.bks.eurosporttest.data.network.mapper.VideoDtoMapper
 import com.bks.eurosporttest.domain.model.Story
 import com.bks.eurosporttest.domain.model.Video
-import com.bks.eurosporttest.interactors.featured.GetVideosAndStories
+import com.bks.eurosporttest.interactors.featured.GetFeaturedItemUsecase
 import com.google.gson.GsonBuilder
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.runBlocking
@@ -26,7 +26,7 @@ class GetVideosAndStoriesTest {
     private lateinit var baseUrl: HttpUrl
 
     // system in test
-    private lateinit var getVideosAndStories: GetVideosAndStories
+    private lateinit var getVideosAndStories: GetFeaturedItemUsecase
 
     // dependencies
     private lateinit var apiService: ApiService
@@ -45,7 +45,7 @@ class GetVideosAndStoriesTest {
             .build()
             .create(ApiService::class.java)
 
-        getVideosAndStories = GetVideosAndStories(
+        getVideosAndStories = GetFeaturedItemUsecase(
             apiService,
             videoDtoMapper,
             storyDtoMapper
