@@ -57,6 +57,10 @@ class FeaturedListFragment: Fragment(R.layout.fragment_featured), FeaturedAdapte
 
         viewModel.viewState.observe(viewLifecycleOwner) {  viewState ->
             when(viewState) {
+                is Loading -> {
+                    displayProgress(viewState.isLoading)
+                }
+
                 is Error -> {
                     Snackbar.make(
                         binding.featuredListFragment,
@@ -65,12 +69,15 @@ class FeaturedListFragment: Fragment(R.layout.fragment_featured), FeaturedAdapte
                     ).show()
                 }
 
-                is Loading -> {
-                    displayProgress(viewState.isLoading)
+                is NetworkError -> {
+                    Snackbar.make(
+                        binding.featuredListFragment,
+                        getString(R.string.no_internet_error),
+                        Snackbar.LENGTH_LONG
+                    ).show()
                 }
             }
         }
-
     }
 
     private fun displayProgress(isDisplayed: Boolean) {

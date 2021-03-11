@@ -9,7 +9,8 @@ A simple android app that displays stories and videos from network API.
 
 ## Architecture
 * Latest cutting edge Android Development practices.
-* Clean architecture, Usecase, MVVM.
+* Use of MVVM for presentation layer.
+* Concepts from Clean Architecture for domain and data layers.
 * Includes Unit Tests for Use cases.
 
 ## Built With 🛠
