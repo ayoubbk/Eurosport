@@ -4,8 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.bks.eurosporttest.R
 import com.bks.eurosporttest.domain.model.FeaturedItem
 import com.bks.eurosporttest.interactors.featured.GetFeaturedItemUsecase
+import com.bks.eurosporttest.presentation.util.ConnectivityManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -15,8 +17,10 @@ import javax.inject.Inject
 class FeaturedViewModel
 @Inject
 constructor(
-    private val getVideosUseCase: GetFeaturedItemUsecase
-):ViewModel()
+private val getVideosUseCase: GetFeaturedItemUsecase,
+private val connectivityManager: ConnectivityManager,
+ ): ViewModel()
+
 {
     private val _viewState = MutableLiveData<FeaturedViewState>()
     val viewState: LiveData<FeaturedViewState> = _viewState
@@ -24,25 +28,36 @@ constructor(
     private val _videosAndStories = MutableLiveData<List<FeaturedItem>>()
     val videosAndStories : LiveData<List<FeaturedItem>> get() = _videosAndStories
 
+    private val isNetworkAvailable: MutableLiveData<Boolean> = connectivityManager.isNetworkAvailable
+
     init {
         fetchFeatured()
     }
 
-    private fun fetchFeatured() {
-        viewModelScope.launch {
-            getVideosUseCase.execute().collect { dataState ->
+    fun fetchFeatured() {
 
-                dataState.loading.let {
-                    _viewState.value = FeaturedViewState.Loading(it)
-                }
+        when(isNetworkAvailable.value) {
+            true -> {
+                viewModelScope.launch {
+                    getVideosUseCase.execute().collect { dataState ->
 
-                dataState.data?.let { list ->
-                    _videosAndStories.value = list
-                }
+                        dataState.loading.let {
+                            _viewState.value = FeaturedViewState.Loading(it)
+                        }
 
-                dataState.error?.let { message ->
-                    _viewState.value = FeaturedViewState.Error(message)
+                        dataState.data?.let { list ->
+                            _videosAndStories.value = list
+                        }
+
+                        dataState.error?.let { message ->
+                            _viewState.value = FeaturedViewState.Error(message)
+                        }
+                    }
                 }
+            }
+
+            false -> {
+                _viewState.value = FeaturedViewState.NetworkError(R.string.no_internet_error)
             }
         }
     }
