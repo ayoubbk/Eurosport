@@ -14,4 +14,6 @@
     <color name="color_box_background">#FFFFFFFF</color>
     <color name="color_views_number">#7D7D7D</color>
     <color name="color_sport_category">@color/colorPrimary</color>
+
+    <color name="color_snackbar_action">#d3e0ea</color>
 </resources>

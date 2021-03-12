@@ -34,7 +34,7 @@ private val connectivityManager: ConnectivityManager,
         fetchFeatured()
     }
 
-    private fun fetchFeatured() {
+    fun fetchFeatured() {
 
         when(isNetworkAvailable.value) {
             true -> {
