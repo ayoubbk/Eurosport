@@ -1,10 +1,7 @@
 package com.bks.eurosporttest.presentation.player
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.bks.eurosporttest.domain.model.Video
 import com.google.android.exoplayer2.SimpleExoPlayer
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
