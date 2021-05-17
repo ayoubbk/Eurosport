@@ -18,15 +18,6 @@ object EuroDateUtils {
         return date.time.toDouble()
     }
 
-    fun dateToString(date: Date): String {
-        return sdf.format(date)
-    }
-
-    fun stringToDate(string: String): Date {
-        return sdf.parse(string)
-            ?: throw NullPointerException("Could not convert date string to Date object.")
-    }
-
     fun getFormattedDate(date: Date): String {
         val dateFormat = DateFormat.getDateInstance() // use DateFormat to get date in phone Locale
 

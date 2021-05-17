@@ -85,6 +85,29 @@ class GetVideosAndStoriesTest {
     }
 
     @Test
+    fun getVideosAndStoriesFromNetwork_emitMixedList() = runBlocking {
+        // condition the response
+        mockWebServer.enqueue(
+                MockResponse()
+                        .setResponseCode(HttpURLConnection.HTTP_OK)
+                        .setBody(videosAndStoriesResponse)
+        )
+
+        // execute the use case
+        val flowItems = getVideosAndStories.execute().toList()
+
+        // first emission should be Loading status
+        assert(flowItems[0].loading)
+
+        // second emission should be the mixed list of videosAndStories
+        val videosAndStories = flowItems[1].data
+        assert(videosAndStories?.size?: 0 > 0)
+
+
+
+    }
+
+    @Test
     fun getVideosAndStoriesFromNetwork_emitHttpError() = runBlocking {
         mockWebServer.enqueue(
             MockResponse()

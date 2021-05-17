@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bks.eurosporttest.domain.model.Story
-import dagger.hilt.android.lifecycle.HiltViewModel
 
 const val SELECTED_STORY_BUNDLE_KEY = "selectedStory"
 
